@@ -1,44 +1,31 @@
 ##Gulp
 
 ##Dev
+-sitemap
 ###HTML
 -prettify
--
+-minify
+-html hint
+-aria
 ###CSS
-
+-postcss
+ -autoprefix
+ -imports
+ -lintcss
+ -inline css
+-minify
+-nanocss
+-sourcemaps
 ###JS
 -babel
+-jscs
+-eslint
+-test
 ###Libs
-
+-copy only minified version
 ###Assets
-
+-optimize images
+-copy rest as it is
 ###Images
-
-
-##Production
-
-###HTML
-
-###CSS
-
-###JS
-
-###Libs
-
-###Assets
-
-###Images
-
-##Test
-
-###HTML
-
-###CSS
-
-###JS
-
-###Libs
-
-###Assets
-
-###Images
+-resize
+-optimize-keep in same folders as before
