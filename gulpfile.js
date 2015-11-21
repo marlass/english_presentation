@@ -63,8 +63,16 @@ var watch = require('gulp-watch');
 var zip = require('gulp-zip');
 var ftp = require('vinyl-ftp');
 
+var postcss = require('gulp-postcss');
+
 var reload = browserSync.reload;
 
+
+//
+//
+//Image tasks - resizing, optimization
+//
+//
 
 gulp.task('opt', function() {
     del('dist/assets/*');
@@ -154,22 +162,37 @@ gulp.task('default',['res'], function() {
 	gulp.start('opt_res');
 });
 
+
+//
+//
+//CSS tasks - postcss,production,analytics
+//
+//
+
 gulp.task('css', function() {
-    gulp.src('src/css/style.scss')
-  	.pipe(plumber())
-    .pipe(sourcemap.init())
-    .pipe(sass({ style: 'expanded'}))
-    .pipe(sourcemap.write({includeContent: false}))
-    .pipe(sourcemap.init({loadMaps: true}))
-    .pipe(autoprefixer({
-            browsers: ['> 1%'],
-            cascade: true
-        }))
-    .pipe(concat('style.css'))
-    .pipe(sourcemap.write('.'))
+    gulp.src('src/css/style.css')
+  	.pipe(postcss([ require('autoprefixer'), require('cssnano') ]) )
     .pipe(gulp.dest('dist/css'));
-    //.pipe(notify({ message: 'Styles task complete' }));
 });
+
+gulp.task('css-analytics', function() {
+    gulp.src('src/css/style.css')
+  	.pipe(postcss([ require('autoprefixer'), require('cssnano') ]) )
+    .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('css-production', function() {
+    gulp.src('src/css/style.css')
+  	.pipe(postcss([ require('autoprefixer'), require('cssnano') ]) )
+    .pipe(gulp.dest('dist/css'));
+});
+
+//
+//
+//HTML tasks - minification, linting
+//
+//
+
 
 gulp.task('html', function() {
     gulp.src('src/html/*.html')
@@ -177,6 +200,12 @@ gulp.task('html', function() {
     .pipe(prettyUrl())
     .pipe(gulp.dest('dist'));
 });
+
+//
+//
+//JS Tasks
+//
+// 
 
 gulp.task('js', function() {
 	gulp.src('src/js/*.js')
@@ -189,6 +218,13 @@ gulp.task('js', function() {
 	.pipe(gulp.dest('dist/js'));
 });
 
+
+//
+//
+//Server task
+//
+//
+
 gulp.task('server', function() {
 
 	browserSync.init({
@@ -198,20 +234,26 @@ gulp.task('server', function() {
 
 });
 
+//
+//
+//Default tasks
+//
+//
+
 gulp.task('watch', ['server'], function() {
  
   // Watch .scss files
-  watch('src/css/*.scss', function(){
+  watch('src/css/**/*.css', function(){
   	gulp.start('css');
   });
  
   // Watch .coffe files
-  watch('src/js/*.js', function(){
+  watch('src/js/**/*.js', function(){
   	gulp.start('js');
   });
  
   // Watch .html files
-  watch('src/html/*.html', function(){
+  watch('src/html/**/*.html', function(){
   	gulp.start('html')
   });
  
