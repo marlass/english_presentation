@@ -51,7 +51,6 @@ var newer = require('gulp-newer');
 var prettyUrl = require('gulp-pretty-url');
 var remember = require('gulp-remember');
 var robots = require('gulp-robots');
-var sass = require('gulp-sass');
 var sitemap = require('gulp-sitemap');
 var sourcemap = require('gulp-sourcemaps');
 var specialHtml = require('gulp-special-html');
@@ -171,21 +170,142 @@ gulp.task('default',['res'], function() {
 
 gulp.task('css', function() {
     gulp.src('src/css/style.css')
-  	.pipe(postcss([ require('autoprefixer'), require('cssnano') ]) )
+    .pipe(sourcemap.init())
+  	.pipe(postcss([ require('precss'),
+                    require('postcss-raw').inspect(),
+                    /*require('postcss-brand-colors'),
+                    require('postcss-color-palette')({palette: 'material'}),
+                    require('postcss-currency'),
+                    require('postcss-instagram'),
+                    require('immutable-css'),
+                    require("stylelint")({"rules": {
+                                           "string-quotes": [2,"double"],
+                                           "number-leading-zero": [1,"always"],
+                                           "number-max-precision": [1,7],
+                                           "number-no-trailing-zeros": 1,
+                                           "number-zero-length-no-unit": 2,
+                                           "declaration-no-important": 2,
+                                           "rule-no-single-line": 0,
+                                          "declaration-block-semicolon-newline-after": [1,"always"],
+                                           "block-no-empty": 2,
+                                           "block-opening-brace-newline-after": [1,"always"],
+                                           "block-closing-brace-newline-before": [1,"always"],
+                                           "selector-no-attribute": 1,
+                                           "selector-no-combinator": 1,
+                                           "selector-no-id": 1,
+                                           "indentation": [2,4]
+                                          }}),
+                    require('postcss-input-style'),
+                    require('laggard'),
+                    require('autoprefixer')({browsers: ['> 1%'],}),
+                    require("css-mqpacker"),
+                    require('postcss-import-url'),*/
+                    require('postcss-raw').write(),
+                    require('postcss-reporter')]))
+    .pipe(sourcemap.write('.'))
     .pipe(gulp.dest('dist/css'));
 });
+//precss
+//raw
+//brandcolor
+//colorpalette
+//currency
+//instagram
+//immutable
+//stylelint
+//input-style
+//laggard
+//autoprefixer
+//node-css-mqpacker
+//import-url
+//reporter
 
 gulp.task('css-analytics', function() {
     gulp.src('src/css/style.css')
+    .pipe(sourcemap.init())
   	.pipe(postcss([ require('autoprefixer'), require('cssnano') ]) )
+    .pipe(sourcemap.write('.'))
     .pipe(gulp.dest('dist/css'));
 });
+//precss
+//raw
+//brandcolor
+//colorpalette
+//currency
+//instagram
+//input-style
+//laggard
+//autoprefixer
+//node-css-mqpacker
+//import-url
+//colorguard
+//doiuse
+//csstats
+//list-selectors
+//reporter
 
 gulp.task('css-production', function() {
     gulp.src('src/css/style.css')
+    .pipe(sourcemap.init())
   	.pipe(postcss([ require('autoprefixer'), require('cssnano') ]) )
+    .pipe(sourcemap.write('.'))
     .pipe(gulp.dest('dist/css'));
 });
+//precss
+//raw
+//brandcolor
+//colorpalette
+//currency
+//instagram
+//input-style
+//laggard
+//autoprefixer
+//node-css-mqpacker
+//import-url
+//cssnano
+//reporter
+
+
+gulp.task('css-colorblind', function() {
+    gulp.src('src/css/style.css')
+    .pipe(sourcemap.init())
+  	.pipe(postcss([ require('autoprefixer'), require('cssnano') ]) )
+    .pipe(sourcemap.write('.'))
+    .pipe(gulp.dest('dist/css'));
+});
+//precss
+//raw
+//brandcolor
+//colorpalette
+//currency
+//instagram
+//colorblind
+//input-style
+//laggard
+//autoprefixer
+//node-css-mqpacker
+//import-url
+//reporter
+
+gulp.task('css-style-guide', function() {
+    gulp.src('src/css/style.css')
+    .pipe(sourcemap.init())
+  	.pipe(postcss([ require('autoprefixer'), require('cssnano') ]) )
+    .pipe(sourcemap.write('.'))
+    .pipe(gulp.dest('dist/css'));
+});
+//precss
+//brandcolor
+//colorpalette
+//currency
+//instagram
+//input-style
+//laggard
+//autoprefixer
+//style-guide
+//mdcss
+//reporter
+
 
 //
 //

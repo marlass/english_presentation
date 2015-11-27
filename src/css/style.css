@@ -15,7 +15,10 @@
  * Generic - normalize
  */
  
-@import "generic/normalize" 
+@import "generic/normalize";
+
+
+
 
 /*
  * Base - default styling
@@ -32,3 +35,7 @@
 /*
  * Components
  */
+ 
+.postcssprecssfix{
+    display: none;
+}
