@@ -29,3 +29,13 @@
 ###Images
 -resize
 -optimize-keep in same folders as before
+
+##Testing
+-karma
+-mocha
+-qunit
+-superhero
+-jasmine
+-selenium
+-webdriverIO
+-visual regression testing
