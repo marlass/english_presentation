@@ -36,6 +36,8 @@
  * Components
  */
  
+@import "components/button";
+ 
 .postcssprecssfix{
     display: none;
 }
