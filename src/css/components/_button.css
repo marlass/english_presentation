@@ -1,6 +1,6 @@
 /*---
 title:   Buttons
-section: Base CSS
+section: Components
 ---
 
 Button styles can be applied to any element. Typically you'll want to use
@@ -10,6 +10,10 @@ either a `<button>` or an `<a>` element:
 ```example:html
 <button class="button">Click</button>
 <a class="button" href="/some-page">Some Page</a>
+```
+
+```example:color
+@color: #ffffff @name: White
 ```
 
 */
