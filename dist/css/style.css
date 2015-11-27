@@ -423,6 +423,36 @@ td, th{
  * Components
  */
  
+/*---
+title:   Buttons
+section: Components
+---
+
+Button styles can be applied to any element. Typically you'll want to use
+either a `<button>` or an `<a>` element:
+
+
+```example:html
+<button class="button">Click</button>
+<a class="button" href="/some-page">Some Page</a>
+```
+
+```example:color
+@color: #ffffff @name: White
+```
+
+*/
+ 
+.button{
+    color: #F44336;
+    background-color: #2196F3;
+    width: 200px;
+}
+ 
+.button--success{
+    color: #4CAF50;
+}
+ 
 .postcssprecssfix{
     display: none;
 }
