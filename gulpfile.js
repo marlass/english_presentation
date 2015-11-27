@@ -242,22 +242,8 @@ gulp.task('css-colorblind', function() {
 //reporter
 
 gulp.task('css-style-guide', function() {
-    gulp.src('src/css/style.css')
-    .pipe(sourcemap.init())
-  	.pipe(postcss([ require('precss'),
-                    require('postcss-raw').inspect(),
-                    require('postcss-brand-colors'),
-                    require('postcss-color-palette')({palette: 'material'}),
-                    require('postcss-currency'),
-                    require('postcss-instagram'),
-                    require('postcss-input-style'),
-                    require('laggard'),
-                    require('autoprefixer')({browsers: ['> 1%'],}),
-                    require('mdcss')({theme: require('mdcss-theme-github')({title: 'Test',examples: {css: ['style.css','../dist/css/style.css'], base: ''}})}),
-                    require('postcss-raw').write(),
-                    require('postcss-reporter')]))
-    .pipe(sourcemap.write('.'))
-    .pipe(gulp.dest('styleguide/style2/'));
+    return gulp.src('dist/css/style.css')
+  	.pipe(postcss([ require('mdcss')({theme: require('mdcss-theme-github')({title: 'English presentation style-guide',examples: {css: ['style.css','../dist/css/style.css'], base: ''}})})]));
 });
 //precss
 //brandcolor
