@@ -230,7 +230,7 @@ gulp.task('css-colorblind', function() {
                     require('postcss-currency'),
                     require('postcss-instagram'),
                     require('postcss-input-style'),
-                    require('colorblind')({method:'achromatopsia'}),
+                    require('postcss-colorblind')({method:'achromatopsia'}),
                     require('laggard'),
                     require('autoprefixer')({browsers: ['> 1%'],}),
                     require('css-mqpacker'),
@@ -394,6 +394,16 @@ gulp.task('test',['css-colorblind','js-test','html-test'], function() {
 
 gulp.task('styleguide',['css-styleguide'], function() {
     gulp.start('server-styleguide');
+});
+
+gulp.task('precommit',['css','js','html'], function() {
+    gulp.start('css-production');
+    gulp.start('js-production');
+    gulp.start('html-production');
+    gulp.start('css-colorblind');
+    gulp.start('js-test');
+    gulp.start('html-test');
+    gulp.start('css-styleguide');
 });
 
 
