@@ -168,6 +168,7 @@ gulp.task('default',['res'], function() {
 //
 
 gulp.task('css', function() {
+    del('dist/css/*');
     return gulp.src('src/css/style.css')
     .pipe(sourcemap.init())
   	.pipe(postcss([ require('precss'),
@@ -201,6 +202,7 @@ gulp.task('css-analytics', function() {
 var nano = require('gulp-cssnano');
 
 gulp.task('css-production', function() {
+    del('production/css/*');
     return gulp.src('src/css/style.css')
   	.pipe(postcss([ require('precss'),
                     require('postcss-raw').inspect(),
@@ -221,6 +223,7 @@ gulp.task('css-production', function() {
 });
 
 gulp.task('css-colorblind', function() {
+    del('test/css/*');
     return gulp.src('src/css/style.css')
     .pipe(sourcemap.init())
   	.pipe(postcss([ require('precss'),
@@ -252,23 +255,33 @@ gulp.task('css-styleguide', function() {
 //HTML tasks - minification, linting
 //
 //
+gulp.task('clear-html-dist', function() {
+    return del.sync(['dist/*','dist/**/*','!dist/css','!dist/css/*','!dist/js','!dist/js/*','!dist/images','!dist/images/*','!dist/assets','!dist/assets/*']);
+});
 
+gulp.task('clear-html-production', function() {
+    return del.sync(['production/*','production/**/*','!production/css','!production/css/*','!production/js','!production/js/*','!production/images','!production/images/*','!production/assets','!production/assets/*']);
+});
 
-gulp.task('html', function() {
+gulp.task('clear-html-test', function() {
+    return del.sync(['test/*','test/**/*','!test/css','!test/css/*','!test/js','!test/js/*','!test/images','!test/images/*','!test/assets','!test/assets/*']);
+});
+
+gulp.task('html',['clear-html-dist'], function() {
     return gulp.src('src/html/*.html')
   	.pipe(plumber())
     .pipe(prettyUrl())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('html-production', function() {
+gulp.task('html-production',['clear-html-production'], function() {
     return gulp.src('dist/**/*.html')
   	.pipe(plumber())
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('production'));
 });
 
-gulp.task('html-test', function() {
+gulp.task('html-test',['clear-html-test'], function() {
     return gulp.src('dist/**/*.html')
   	.pipe(plumber())
     .pipe(gulp.dest('test'));
