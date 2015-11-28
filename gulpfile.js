@@ -9,6 +9,7 @@ var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
 var merge = require('merge-stream');
 
+var babel = require('gulp-babel');
 var imageResize = require('gulp-image-resize');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
@@ -40,8 +41,6 @@ var csso = require('gulp-csso');
 var filesize = require('gulp-filesize');
 var git = require('gulp-git');
 var gulpGrunt = require('gulp-grunt');
-var html = require('gulp-html');
-var htmlVal = require('gulp-html-validator');
 var htmlmin = require('gulp-htmlmin');
 var inlineCss = require('gulp-inline-css');
 var jshint = require('gulp-jshint');
@@ -169,7 +168,7 @@ gulp.task('default',['res'], function() {
 //
 
 gulp.task('css', function() {
-    gulp.src('src/css/style.css')
+    return gulp.src('src/css/style.css')
     .pipe(sourcemap.init())
   	.pipe(postcss([ require('precss'),
                     require('postcss-raw').inspect(),
@@ -191,7 +190,7 @@ gulp.task('css', function() {
 
 
 gulp.task('css-analytics', function() {
-    gulp.src('dist/css/style.css')
+    return gulp.src('dist/css/style.css')
   	.pipe(postcss([ require('colorguard'),
                     /*require('doiuse')({browsers:['ie >= 6', '> 1%'],onFeatureUsage: function (usageInfo) {
       console.log(usageInfo.message)
@@ -202,13 +201,27 @@ gulp.task('css-analytics', function() {
 var nano = require('gulp-cssnano');
 
 gulp.task('css-production', function() {
-    gulp.src('dist/css/style.css')
+    return gulp.src('src/css/style.css')
+  	.pipe(postcss([ require('precss'),
+                    require('postcss-raw').inspect(),
+                    require('postcss-brand-colors'),
+                    require('postcss-color-palette')({palette: 'material'}),
+                    require('postcss-currency'),
+                    require('postcss-instagram'),
+                    require('immutable-css'),
+                    require('postcss-input-style'),
+                    require('laggard'),
+                    require('autoprefixer')({browsers: ['> 1%'],}),
+                    require('css-mqpacker'),
+                    require('postcss-import-url'),
+                    require('postcss-raw').write(),
+                    require('postcss-reporter')]))
     .pipe(nano({discardComments: {removeAll: true}}))
     .pipe(gulp.dest('production/css'));
 });
 
 gulp.task('css-colorblind', function() {
-    gulp.src('src/css/style.css')
+    return gulp.src('src/css/style.css')
     .pipe(sourcemap.init())
   	.pipe(postcss([ require('precss'),
                     require('postcss-raw').inspect(),
@@ -227,35 +240,11 @@ gulp.task('css-colorblind', function() {
     .pipe(sourcemap.write('.'))
     .pipe(gulp.dest('test/css'));
 });
-//precss
-//raw
-//brandcolor
-//colorpalette
-//currency
-//instagram
-//colorblind
-//input-style
-//laggard
-//autoprefixer
-//node-css-mqpacker
-//import-url
-//reporter
 
-gulp.task('css-style-guide', function() {
+gulp.task('css-styleguide', function() {
     return gulp.src('dist/css/style.css')
   	.pipe(postcss([ require('mdcss')({theme: require('mdcss-theme-github')({title: 'English presentation style-guide',examples: {css: ['style.css','../dist/css/style.css'], base: ''}})})]));
 });
-//precss
-//brandcolor
-//colorpalette
-//currency
-//instagram
-//input-style
-//laggard
-//autoprefixer
-//style-guide
-//mdcss
-//reporter
 
 
 //
@@ -266,10 +255,23 @@ gulp.task('css-style-guide', function() {
 
 
 gulp.task('html', function() {
-    gulp.src('src/html/*.html')
+    return gulp.src('src/html/*.html')
   	.pipe(plumber())
     .pipe(prettyUrl())
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('html-production', function() {
+    return gulp.src('dist/**/*.html')
+  	.pipe(plumber())
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('production'));
+});
+
+gulp.task('html-test', function() {
+    return gulp.src('dist/**/*.html')
+  	.pipe(plumber())
+    .pipe(gulp.dest('test'));
 });
 
 //
@@ -279,14 +281,30 @@ gulp.task('html', function() {
 // 
 
 gulp.task('js', function() {
-	gulp.src('src/js/*.js')
-	.pipe(plumber())
-	.pipe(sourcemap.init())
-	.pipe(coffee({bare: true}).on('error', util.log))
-	.pipe(concat('script.js'))
-	.pipe(sourcemap.write())
-	.pipe(jshint())
-	.pipe(gulp.dest('dist/js'));
+	return gulp.src('src/js/**/*.js')
+        .pipe(sourcemap.init())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(concat('app.js'))
+        .pipe(sourcemap.write('.'))
+        .pipe(gulp.dest('dist/js/'));
+});
+
+gulp.task('js-production', function() {
+    return gulp.src('src/js/**/*.js')
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(concat('app.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('production/js/'));
+});
+
+
+gulp.task('js-test', function() {
+	return gulp.src('dist/js/app.js')
+        .pipe(gulp.dest('test/js/'));
 });
 
 
@@ -305,6 +323,33 @@ gulp.task('server', function() {
 
 });
 
+gulp.task('server-production', function() {
+
+	browserSync.init({
+        server: "./production/",
+        startPath: "/"
+    });
+
+});
+
+gulp.task('server-test', function() {
+
+	browserSync.init({
+        server: "./test/",
+        startPath: "/"
+    });
+
+});
+
+gulp.task('server-styleguide', function() {
+
+	browserSync.init({
+        server: "./",
+        startPath: "styleguide/"
+    });
+
+});
+
 //
 //
 //Default tasks
@@ -313,12 +358,12 @@ gulp.task('server', function() {
 
 gulp.task('watch', ['server'], function() {
  
-  // Watch .scss files
+  // Watch .css files
   watch('src/css/**/*.css', function(){
   	gulp.start('css');
   });
  
-  // Watch .coffe files
+  // Watch .babel files
   watch('src/js/**/*.js', function(){
   	gulp.start('js');
   });
@@ -337,6 +382,18 @@ gulp.task('watch', ['server'], function() {
 
 gulp.task('default',['css','js','html'], function() {
     gulp.start('watch');
+});
+
+gulp.task('production',['css-production','js-production','html-production'], function() {
+    gulp.start('server-production');
+});
+
+gulp.task('test',['css-colorblind','js-test','html-test'], function() {
+    gulp.start('server-test');
+});
+
+gulp.task('styleguide',['css-styleguide'], function() {
+    gulp.start('server-styleguide');
 });
 
 
