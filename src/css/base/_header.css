@@ -1,0 +1,23 @@
+
+
+header{
+    margin: 0 auto;
+    width: 660px;
+    background-image: url("/images/header2.jpg");
+    background-size: contain;
+    height: 330px;
+}
+
+h1{
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    font-size: 2.1em;
+    padding: 1.2em 0.6em;
+    color: white;
+    background-color: $blue;
+    opacity: 0.6;
+    width: 40%;
+    float: left;
+    height: 120px;
+}

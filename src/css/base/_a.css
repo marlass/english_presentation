@@ -1,0 +1,38 @@
+/*---
+title: Links - <a>
+section: Base CSS
+---
+
+Styles for a tag - would be triggerd for a tag without modifiers class.
+
+```example:html
+<a href="#" title="Some link">Some link</a>
+```
+
+*/
+
+a:link{
+    color: $blue;
+    text-decoration: none;
+}
+
+a:visited{
+    color: $blue;
+    text-decoration: none;
+}
+
+
+a:hover{
+    color: $blue;
+    text-decoration: underline;
+}
+
+a:active{
+    color: $blue;
+    text-decoration: underline;
+}
+
+a:focus{
+    color: $blue;
+    text-decoration: underline;
+}

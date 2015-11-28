@@ -1,0 +1,28 @@
+/*---
+title: Footer - <footer>
+section: Base CSS
+---
+
+Styles for footer tag - suited for footer tag with p and a tag.
+
+```example:html
+<footer>
+    <p>Example info</p>
+    <a href="#" title="Some link">Some link</a>
+</footer>
+```
+
+*/
+
+footer {
+    box-sizing: border-box;
+    padding: 1.2em 1.3em;
+    width: 660px;
+    margin: 0 auto;
+    background-color: $darker_blue;
+}
+
+footer p{
+    color: white;
+    line-height: 1.4em;
+}

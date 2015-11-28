@@ -155,8 +155,8 @@ h1{
  */
  
 mark{
-    background: #ff0;
-    color: #000;
+    background: #ededed;
+    color: #000000;
 }
  
 /**
@@ -447,7 +447,7 @@ figure{
     width: 100%;
     max-width: 100%;
     display: block;
-    background-color: #E3F2FD;
+    background-color: #f0f0f0;
 }
 img{
     width: 100%;
@@ -460,7 +460,7 @@ figcaption{
     margin: 0;
     font-size: 1.2em;
     padding: 0.4em 0.6em 0.6em 0.6em;
-    color: #1A237E;
+    color: #282828;
     outline: 0;
 }
 main{
@@ -481,8 +481,8 @@ h1{
     margin: 0;
     font-size: 2.1em;
     padding: 1.2em 0.6em;
-    color: #FFFFFF;
-    background-color: #2196F3;
+    color: #ffffff;
+    background-color: #848484;
     opacity: 0.6;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     width: 40%;
@@ -502,23 +502,23 @@ Styles for a tag - would be triggerd for a tag without modifiers class.
 
 */
 a:link{
-    color: #2196F3;
+    color: #848484;
     text-decoration: none;
 }
 a:visited{
-    color: #2196F3;
+    color: #848484;
     text-decoration: none;
 }
 a:hover{
-    color: #2196F3;
+    color: #848484;
     text-decoration: underline;
 }
 a:active{
-    color: #2196F3;
+    color: #848484;
     text-decoration: underline;
 }
 a:focus{
-    color: #2196F3;
+    color: #848484;
     text-decoration: underline;
 }
 /*---
@@ -539,13 +539,13 @@ Styles for article tag - suited for article tag with h2,p,and a tag.
 */
 article{
     padding: 0.5em 1.3em;
-    background-color: #E3F2FD;
+    background-color: #f0f0f0;
 }
 article:last-of-type{
     padding-bottom: 1.5em;
 }
 h2{
-    color: #1A237E;
+    color: #282828;
 }
 p{
     line-height: 1.4em;
@@ -570,18 +570,18 @@ footer{
     padding: 1.2em 1.3em;
     width: 660px;
     margin: 0 auto;
-    background-color: #1A237E;
+    background-color: #282828;
 }
 footer p{
-    color: #FFFFFF;
+    color: #ffffff;
     line-height: 1.4em;
 }
 nav{
     height: 120px;
     width: 60%;
     float: right;
-    color: #FFFFFF;
-    background-color: #2196F3;
+    color: #ffffff;
+    background-color: #848484;
     opacity: 0.6;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 }
@@ -598,7 +598,7 @@ li{
     float: left;
 }
 li a{
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1.4em;
     display: block;
     text-align: center;
@@ -607,21 +607,21 @@ li a{
 }
 li a:link{
     font-size: 1.4em;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 li a:visited{
-    color: #FFFFFF;
+    color: #ffffff;
 }
 li a:hover{
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: underline;
 }
 li a:active{
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: underline;
 }
 li a:focus{
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: underline;
 }
  

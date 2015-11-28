@@ -1,0 +1,41 @@
+/*---
+title: Figure - <figure>
+section: Base CSS
+---
+
+Styles for figure tag - suited for figure tag with img and figcaption.
+
+```example:html
+<figure>
+    <img src="../dist/images/header1.jpg">
+    <figcaption>Description</figcaption>
+</figure>
+```
+
+*/
+
+
+figure{
+    margin: 0 0 1.5em 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    background-color: $bg; 
+}
+
+img{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+figcaption{
+    font-style: italic;
+    margin: 0;
+    font-size: 1.2em;
+    padding: 0.4em 0.6em 0.6em 0.6em; 
+    color: $darker_blue;
+    outline: 0;
+}

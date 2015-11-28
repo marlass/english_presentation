@@ -1,0 +1,58 @@
+$color: white;
+
+nav{
+    height: 120px;
+    width: 60%;
+    float: right;    
+    color: $color;
+    background-color: $blue;
+    opacity: 0.6;
+}
+
+ul{
+    display: block;
+    margin: 0em;
+    padding: 0em 2em 0em 3em;
+}
+
+li{
+    padding: 3em 2em;
+    margin: 0;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+}
+
+li a{
+    color: $color;
+    font-size: 1.4em;
+    display: block;
+    text-align: center;
+    font-style: italic;
+    text-decoration: none;
+}
+
+li a:link{
+    font-size: 1.4em;
+    color: $color;
+}
+
+li a:visited{
+    color: $color;
+}
+
+
+li a:hover{
+    color: $color;
+    text-decoration: underline;
+}
+
+li a:active{
+    color: $color;
+    text-decoration: underline;
+}
+
+li a:focus{
+    color: $color;
+    text-decoration: underline;
+}

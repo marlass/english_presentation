@@ -1,0 +1,32 @@
+/*---
+title: Article - <article>
+section: Base CSS
+---
+
+Styles for article tag - suited for article tag with h2,p,and a tag.
+
+```example:html
+<article>
+    <h2>Some article</h2>
+    <p>Lorem ipsum fjdsfh jfh jhf jsdh fjhsdfh  hjsdsd hfhsdj shd js jhsdjh jhjhshs hjsh  hs hsh h sh jshjfhsjhdf jh h hjh sjhfj hsjdf s</p>
+    <a href="#" title="Read more">Read more</a>
+</article>
+```
+
+*/
+
+article{
+    padding: 0.5em 1.3em;
+    background-color: $bg;
+}
+article:last-of-type{
+    padding-bottom: 1.5em;
+}
+
+h2{
+    color: $darker_blue;
+}
+
+p{
+    line-height: 1.4em;
+}

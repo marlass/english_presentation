@@ -2,7 +2,7 @@
  * 
  * Globals - variables,settings
  */
- 
+@import "globals/variables"; 
  
  
 /*
@@ -23,7 +23,14 @@
 /*
  * Base - default styling
  */
- 
+@import "base/html";
+@import "base/figure";
+@import "base/main";
+@import "base/header";
+@import "base/a";
+@import "base/article";
+@import "base/footer";
+@import "base/nav";
  
  
 /*
@@ -35,8 +42,6 @@
 /*
  * Components
  */
- 
-@import "components/button";
  
 .postcssprecssfix{
     display: none;

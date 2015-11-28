@@ -10,12 +10,41 @@
 	<ul>
 		
 				<li>
-					<a href="#components"><span>Components</span></a>
+					<a href="#global-settings"><span>Global settings</span></a>
 					
 	<ul>
 		
 				<li>
-					<a href="#buttons"><span>Buttons</span></a>
+					<a href="#colors"><span>Colors</span></a>
+					
+				</li>
+				
+	</ul>
+	
+				</li>
+				
+				<li>
+					<a href="#base-css"><span>Base CSS</span></a>
+					
+	<ul>
+		
+				<li>
+					<a href="#figure---figure"><span>Figure - &lt;figure&gt;</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#links---a"><span>Links - &lt;a&gt;</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#article---article"><span>Article - &lt;article&gt;</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#footer---footer"><span>Footer - &lt;footer&gt;</span></a>
 					
 				</li>
 				
@@ -30,20 +59,18 @@
 
 <main>
 	
-		<section id="components">
-			<h2>Components</h2>
+		<section id="global-settings">
+			<h2>Global settings</h2>
 			<div>
 				
 				
-		<section id="buttons">
-			<h3>Buttons</h3>
+		<section id="colors">
+			<h3>Colors</h3>
 			<div>
-				<p>Button styles can be applied to any element. Typically you&#39;ll want to use
-either a <code>&lt;button&gt;</code> or an <code>&lt;a&gt;</code> element:</p>
-<pre><code class="lang-example:html">&lt;button class=&quot;button&quot;&gt;Click&lt;/button&gt;
-&lt;a class=&quot;button&quot; href=&quot;/some-page&quot;&gt;Some Page&lt;/a&gt;
-</code></pre>
-<pre><code class="lang-example:color">@color: #ffffff @name: White
+				<p>Colors used in application</p>
+<pre><code class="lang-example:color">@color: #E3F2FD @name: Background color - light blue
+@color: #2196F3 @name: Blue 
+@color: #1A237E @name: Darker blue
 </code></pre>
 
 				
@@ -53,7 +80,69 @@ either a <code>&lt;button&gt;</code> or an <code>&lt;a&gt;</code> element:</p>
 			</div>
 		</section>
 		
-	<footer>Last modified Friday, 27 November 2015 20:03
+		<section id="base-css">
+			<h2>Base CSS</h2>
+			<div>
+				
+				
+		<section id="figure---figure">
+			<h3>Figure - &lt;figure&gt;</h3>
+			<div>
+				<p>Styles for figure tag - suited for figure tag with img and figcaption.</p>
+<pre><code class="lang-example:html">&lt;figure&gt;
+    &lt;img src=&quot;../dist/images/header1.jpg&quot;&gt;
+    &lt;figcaption&gt;Description&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="links---a">
+			<h3>Links - &lt;a&gt;</h3>
+			<div>
+				<p>Styles for a tag - would be triggerd for a tag without modifiers class.</p>
+<pre><code class="lang-example:html">&lt;a href=&quot;#&quot; title=&quot;Some link&quot;&gt;Some link&lt;/a&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="article---article">
+			<h3>Article - &lt;article&gt;</h3>
+			<div>
+				<p>Styles for article tag - suited for article tag with h2,p,and a tag.</p>
+<pre><code class="lang-example:html">&lt;article&gt;
+    &lt;h2&gt;Some article&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum fjdsfh jfh jhf jsdh fjhsdfh  hjsdsd hfhsdj shd js jhsdjh jhjhshs hjsh  hs hsh h sh jshjfhsjhdf jh h hjh sjhfj hsjdf s&lt;/p&gt;
+    &lt;a href=&quot;#&quot; title=&quot;Read more&quot;&gt;Read more&lt;/a&gt;
+&lt;/article&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="footer---footer">
+			<h3>Footer - &lt;footer&gt;</h3>
+			<div>
+				<p>Styles for footer tag - suited for footer tag with p and a tag.</p>
+<pre><code class="lang-example:html">&lt;footer&gt;
+    &lt;p&gt;Example info&lt;/p&gt;
+    &lt;a href=&quot;#&quot; title=&quot;Some link&quot;&gt;Some link&lt;/a&gt;
+&lt;/footer&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+			</div>
+		</section>
+		
+	<footer>Last modified Saturday, 28 November 2015 14:28
 </main>
 <script src="prism.js"></script>
 <script src="examples.js"></script>

@@ -1,0 +1,18 @@
+/*---
+title: Colors
+section: Global settings
+---
+
+Colors used in application
+
+```example:color
+@color: #E3F2FD @name: Background color - light blue
+@color: #2196F3 @name: Blue 
+@color: #1A237E @name: Darker blue
+```
+
+*/
+
+$blue: blue;
+$bg: #E3F2FD;
+$darker_blue: navy;
