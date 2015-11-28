@@ -265,6 +265,14 @@ gulp.task('css-colorblind',['clear-css-test'], function() {
                     require('postcss-instagram'),
                     require('postcss-input-style'),
                     require('postcss-colorblind')({method:'achromatopsia'}),
+                    //protanomaly - low red
+                    //protanopia - no red
+                    //deuteranomaly - low green
+                    //deuteranopia - no green
+                    //tritanomaly - low blue
+                    //tritanopia - no blue
+                    //achromatomaly - almost no color
+                    //achromatopsia - no color
                     require('laggard'),
                     require('autoprefixer')({browsers: ['> 1%'],}),
                     require('css-mqpacker'),
