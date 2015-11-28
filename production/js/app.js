@@ -1,1 +1,1 @@
-"use strict";var a=5;
+"use strict";var request=new XMLHttpRequest;request.open("GET","http://www.towerbridge.org.uk/lift-times/",!0),request.onload=function(){if(request.status>=200&&request.status<400){var e=request.responseText;console.log(e)}},request.onerror=function(){},request.send();
