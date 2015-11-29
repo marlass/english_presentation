@@ -454,15 +454,15 @@ gulp.task('watch', ['server'], function() {
  
 });
 
-gulp.task('default',['css','js','html','opt','images'], function() {
+gulp.task('default',['css','js','html'/*,'opt','images'*/], function() {
     gulp.start('watch');
 });
 
-gulp.task('production',['css-production','js-production','html-production','copy-images'], function() {
+gulp.task('production',['css-production','js-production','html-production',/*'copy-images'*/], function() {
     gulp.start('server-production');
 });
 
-gulp.task('test',['css-colorblind','js-test','html-test','copy-images'], function() {
+gulp.task('test',['css-colorblind','js-test','html-test'/*,'copy-images'*/], function() {
     gulp.start('server-test');
 });
 
@@ -470,7 +470,7 @@ gulp.task('styleguide',['css-styleguide'], function() {
     gulp.start('server-styleguide');
 });
 
-gulp.task('precommit',['css','js','html','opt'], function() {
+gulp.task('precommit',['css','js','html'/*,'opt'*/], function() {
     gulp.start('css-production');
     gulp.start('js-production');
     gulp.start('html-production');
@@ -478,7 +478,7 @@ gulp.task('precommit',['css','js','html','opt'], function() {
     gulp.start('js-test');
     gulp.start('html-test');
     gulp.start('css-styleguide');
-    gulp.start('pics');
+    //gulp.start('pics');
 });
 
 
