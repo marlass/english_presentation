@@ -195,6 +195,7 @@ gulp.task('clear-css-dist', function() {
 
 gulp.task('css',['clear-css-dist'], function() {
     return gulp.src('src/css/style.css')
+    .pipe(plumber())
     .pipe(sourcemap.init())
   	.pipe(postcss([ require('precss'),
                     require('postcss-raw').inspect(),
@@ -232,6 +233,7 @@ gulp.task('clear-css-production', function() {
 
 gulp.task('css-production',['clear-css-production'], function() {
     return gulp.src('src/css/style.css')
+    .pipe(plumber())
   	.pipe(postcss([ require('precss'),
                     require('postcss-raw').inspect(),
                     require('postcss-brand-colors'),
@@ -256,6 +258,7 @@ gulp.task('clear-css-test', function() {
 
 gulp.task('css-colorblind',['clear-css-test'], function() {
     return gulp.src('src/css/style.css')
+    .pipe(plumber())
     .pipe(sourcemap.init())
   	.pipe(postcss([ require('precss'),
                     require('postcss-raw').inspect(),
